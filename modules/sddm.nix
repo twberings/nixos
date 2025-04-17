@@ -18,6 +18,10 @@
 			(where-is-my-sddm-theme.override {
 				variants = ["qt6"];
 			})
+			(catppuccin-where-is-my-sddm-theme.override {
+				variants = ["qt6"];
+				flavor = "mocha";
+			})
 		];
 
 	};

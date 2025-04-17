@@ -31,5 +31,8 @@
 	};
   };
 
+  wayland.windowManager.hyprland = {
+    "$mainmod" = "SUPER";
+  };
 
 }
