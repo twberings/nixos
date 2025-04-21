@@ -60,10 +60,13 @@
     wget
   ];
 
-  home-manager = {
+  home-manager."thijs" = {
 	extraSpecialArgs = { inherit inputs; };
 	users = {
-		"thijs" = import ./home.nix;
+		modules = [
+			./home.nix
+			inputs.self.outputs.homeManagerModules.default
+		];
 	};
   };
   system.stateVersion = "24.11";

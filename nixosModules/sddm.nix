@@ -6,11 +6,9 @@
 	};
 
 	config = lib.mkIf config.services.sddm.enable {
-		# services.xserver.enable = true;
 		services.displayManager.sddm = {
 			enable = true;
 			wayland.enable = true;
-			# wayland.compositor = "kwin";
 			theme = "where_is_my_sddm_theme";
 			package = pkgs.kdePackages.sddm;
 		};

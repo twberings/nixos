@@ -28,6 +28,8 @@
 			})
 		];
 	};
+
+	homeManagerModules.default = ./homeModules;
     };
   };
 }
