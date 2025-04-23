@@ -21,6 +21,7 @@
 						bottom = 0,
 					},
 					window_background_opacity = 0.7,
+					font_dirs = { "${config.home.profileDirectory}/share/fonts" },
 					font = wezterm.font_with_fallback {
 						'JetBrainsMono Nerd Font',
 						'FiraCode Nerd Font',

@@ -29,6 +29,7 @@
 
   hyprland.enable = true;
   wezterm.enable = true;
+  starship.enable = true;
 
   
 
