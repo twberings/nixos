@@ -2,10 +2,10 @@
 
 {
 	options = {
-		services.sddm.enable = lib.mkEnableOption "Enable SDDM with theming";
+		sddm.enable = lib.mkEnableOption "Enable SDDM with theming";
 	};
 
-	config = lib.mkIf config.services.sddm.enable {
+	config = lib.mkIf config.sddm.enable {
 		services.displayManager.sddm = {
 			enable = true;
 			wayland.enable = true;

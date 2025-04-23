@@ -21,15 +21,14 @@
 		specialArgs = {inherit inputs;};
 		modules = [
 			./hosts/laptop/configuration.nix
-			./modules/sddm.nix
+			./nixosModules/sddm.nix
 			inputs.home-manager.nixosModules.default
 			({pkgs, ...}: {
 				nixpkgs.overlays = [sddm-theme.overlays.default];
 			})
 		];
 	};
-
-	homeManagerModules.default = ./homeModules;
     };
+    homeManagerModules.default = ./homeManagerModules;
   };
 }

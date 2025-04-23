@@ -14,7 +14,7 @@
   networking.networkmanager.enable = true;  
 
   nix.settings.experimental-features = [ "nix-command" "flakes" ];
-  services.sddm.enable = true;
+  sddm.enable = true;
   boot.plymouth.enable = true;
 
   time.timeZone = "Europe/Amsterdam";
@@ -60,13 +60,15 @@
     wget
   ];
 
-  home-manager."thijs" = {
+  home-manager = {
 	extraSpecialArgs = { inherit inputs; };
 	users = {
-		modules = [
-			./home.nix
-			inputs.self.outputs.homeManagerModules.default
-		];
+		"thijs" = {
+			imports = [
+				./home.nix
+				inputs.self.outputs.homeManagerModules.default
+			];
+		};
 	};
   };
   system.stateVersion = "24.11";

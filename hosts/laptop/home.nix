@@ -18,10 +18,6 @@
 
   programs.home-manager.enable = true;
   
-  programs.wezterm = {
-	  enable = true;
-  };
-
   programs.git = {
 	enable = true;
 	userEmail = "twberings@gmail.com";
@@ -31,7 +27,8 @@
 	};
   };
 
-  hyprland.enable = false;
+  hyprland.enable = true;
+  wezterm.enable = true;
 
   
 
