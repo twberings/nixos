@@ -37,13 +37,12 @@
   users.users.thijs = {
     isNormalUser = true;
     extraGroups = [ "wheel" ]; # Enable ‘sudo’ for the user.
-    packages = with pkgs; [
-      tree
-    ];
+    shell = pkgs.zsh;
   };
 
   qt.enable = true;
   programs.firefox.enable = true;
+  programs.zsh.enable = true;
   programs.hyprland = {
 	enable = true;
 	xwayland.enable = true;

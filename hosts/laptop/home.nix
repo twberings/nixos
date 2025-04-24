@@ -17,6 +17,14 @@
   };
 
   programs.home-manager.enable = true;
+
+  programs.zsh = {
+	enable = true;
+	autosuggestion = {
+		enable = true;
+		strategy = [ "history" ];
+	};
+  };
   
   programs.git = {
 	enable = true;

@@ -8,6 +8,7 @@
 	config = lib.mkIf config.wezterm.enable {
 		programs.wezterm = {
 			enable = true;
+			enableZshIntegration = true;
 			extraConfig = ''
 				local wezterm = require("wezterm")
 
