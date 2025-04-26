@@ -133,5 +133,14 @@
       ];
     };
   };
+  home.file = {
+	".local/share/wallpapers/0.png".source = ./wallpapers/0.png;
+  };
+  services.hyprpaper = {
+	enable = true;
+	settings = {
+		splash = false;
+	};
+  };
 	};
 }
