@@ -66,10 +66,12 @@
       "$browser" = "firefox";
       "$term" = "wezterm";
       "$explorer" = "thunar";
+      "$apprunner" = "tofi-drun --drun-launch=true";
 
       bind = [
         "$mainMod, B, exec, $browser"
 	"$mainMod SHIFT, B, exec, $browser -private-window"
+	"$mainMod, Space, exec, $apprunner"
 	"$mainMod, Return, exec, $term"
 	"$mainMod, T, exec, $term"
 	"$mainMod, W, killactive"

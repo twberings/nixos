@@ -9,13 +9,18 @@
     	inputs.nixpkgs.follows = "nixpkgs";
     };
 
+    catppuccin = {
+	url = "github:catppuccin/nix";
+    	inputs.nixpkgs.follows = "nixpkgs";
+    };
+
     sddm-theme = {
 	url = "github:catppuccin/where-is-my-sddm-theme";
     	inputs.nixpkgs.follows = "nixpkgs";
     };
   };
 
-  outputs = { self, nixpkgs, sddm-theme, ... }@inputs: {
+  outputs = { self, nixpkgs, sddm-theme, catppuccin, ... }@inputs: {
     nixosConfigurations = {
     	nixos = nixpkgs.lib.nixosSystem {
 		specialArgs = {inherit inputs;};
@@ -26,6 +31,13 @@
 			({pkgs, ...}: {
 				nixpkgs.overlays = [sddm-theme.overlays.default];
 			})
+			{
+				home-manager.users.thijs = {
+					imports = [
+						catppuccin.homeModules.catppuccin
+					];
+				};
+			}
 		];
 	};
     };

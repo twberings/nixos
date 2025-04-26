@@ -38,7 +38,30 @@
   hyprland.enable = true;
   wezterm.enable = true;
   starship.enable = true;
+  waybar.enable = true;
+  programs.tofi = {
+  	enable = true;
+	settings = {
+		width = "100%";
+		height = "100%";
+		border-width = 0;
+		outline-width = 0;
+		font = "monospace";
+		padding-left = "35%";
+		padding-top = "35%";
+		result-spacing = 25;
+		num-results = 5;
+	};
+  };
 
-  
+  catppuccin.flavor = "mocha";
+  catppuccin.accent = "green";
+  catppuccin.tofi.enable = true;
+
+  gtk.enable = true;
+  qt.enable = true;
+  catppuccin.gtk.enable = true;
+  catppuccin.cursors.enable = true;
+  catppuccin.gtk.icon.enable = true;
 
 }

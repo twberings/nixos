@@ -4,5 +4,6 @@
 		./fonts.nix
 		./wezterm.nix
 		./starship.nix
+		./waybar.nix
 	];
 }
