@@ -8,6 +8,8 @@
   home.packages = [
     pkgs.xfce.thunar
     pkgs.lazygit
+    pkgs.networkmanager_dmenu
+    pkgs.networkmanagerapplet
   ];
 
   home.file = {
@@ -52,6 +54,14 @@
 		result-spacing = 25;
 		num-results = 5;
 	};
+  };
+
+  xdg = {
+	enable = true;
+	configFile."networkmanager-dmenu/config.ini".text = ''
+		[dmenu]
+		dmenu_command = tofi
+	'';
   };
 
   catppuccin.flavor = "mocha";

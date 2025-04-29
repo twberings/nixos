@@ -134,12 +134,14 @@
     };
   };
   home.file = {
-	".local/share/wallpapers/0.png".source = ./wallpapers/0.png;
+	".config/hypr/wallpapers/0.png".source = ./wallpapers/0.png;
   };
   services.hyprpaper = {
 	enable = true;
 	settings = {
 		splash = false;
+		preload = ["$HOME/.config/hypr/wallpapers/0.png"];
+		wallpaper = ",$HOME/.config/hypr/wallpapers/0.png";
 	};
   };
 	};

@@ -9,6 +9,11 @@
     	inputs.nixpkgs.follows = "nixpkgs";
     };
 
+    nixvim = {
+    	url = "github:nix-community/nixvim";
+    	inputs.nixpkgs.follows = "nixpkgs";
+    };
+
     catppuccin = {
 	url = "github:catppuccin/nix";
     	inputs.nixpkgs.follows = "nixpkgs";
@@ -20,7 +25,7 @@
     };
   };
 
-  outputs = { self, nixpkgs, sddm-theme, catppuccin, ... }@inputs: {
+  outputs = { self, nixpkgs, sddm-theme, catppuccin, nixvim, ... }@inputs: {
     nixosConfigurations = {
     	nixos = nixpkgs.lib.nixosSystem {
 		specialArgs = {inherit inputs;};
@@ -35,6 +40,7 @@
 				home-manager.users.thijs = {
 					imports = [
 						catppuccin.homeModules.catppuccin
+						nixvim.homeManagerModules.nixvim
 					];
 				};
 			}
