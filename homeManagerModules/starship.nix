@@ -1,14 +1,18 @@
-{ config, lib, pkgs, ...}:
+{
+  config,
+  lib,
+  ...
+}:
 
 {
-	options = {
-		starship.enable = lib.mkEnableOption "enables starship";
-	};
+  options = {
+    starship.enable = lib.mkEnableOption "enables starship";
+  };
 
-	config = lib.mkIf config.starship.enable {
-		programs.starship = {
-			enable = true;
-			enableZshIntegration = true;
-			};
-	};
+  config = lib.mkIf config.starship.enable {
+    programs.starship = {
+      enable = true;
+      enableZshIntegration = true;
+    };
+  };
 }
