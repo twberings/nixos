@@ -40,6 +40,7 @@
           modules = [
             ./hosts/laptop/configuration.nix
             ./nixosModules/sddm.nix
+            ./nixosModules/vm.nix
             inputs.home-manager.nixosModules.default
             (
               { ... }:

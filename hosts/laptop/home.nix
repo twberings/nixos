@@ -10,6 +10,7 @@
     pkgs.lazygit
     pkgs.networkmanager_dmenu
     pkgs.networkmanagerapplet
+    pkgs.ripgrep
   ];
 
   home.file = {

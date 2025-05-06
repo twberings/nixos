@@ -6,7 +6,7 @@
 
     globals.mapleader = " ";
 
-    diagnostic.config = {
+    diagnostic.settings = {
       virtual_lines = {
         current_line = true;
       };
@@ -65,6 +65,10 @@
           };
         };
       };
+      rustaceanvim = {
+        enable = true;
+        settings.tools.enable_clippy = true;
+      };
 
       blink-emoji.enable = true;
       blink-cmp = {
@@ -91,8 +95,24 @@
 
       oil.enable = true;
       lualine.enable = true;
-      treesitter.enable = true;
-      telescope.enable = true;
+      todo-comments.enable = true;
+      # nvim-autopair.enable = true;
+      treesitter = {
+        enable = true;
+        settings = {
+          highlight.enable = true;
+          indent.enable = true;
+        };
+      };
+      gitsigns.enable = true;
+      telescope = {
+        enable = true;
+        keymaps = {
+          "<leader>ff" = "find_files";
+          "<leader>fg" = "live_grep";
+          "<leader><leader>" = "oldfiles";
+        };
+      };
       web-devicons.enable = true;
       notify.enable = true;
       noice = {

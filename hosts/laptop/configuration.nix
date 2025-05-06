@@ -23,6 +23,7 @@
     "flakes"
   ];
   sddm.enable = true;
+  vm.enable = true;
   boot.plymouth.enable = true;
 
   time.timeZone = "Europe/Amsterdam";

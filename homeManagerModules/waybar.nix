@@ -40,7 +40,7 @@
           };
           "hyprland/window" = {
             rewrite = {
-              "(.*) — Mozilla Firefox" = " 󰈹  $1";
+              "(.*) — Mozilla Firefox" = "󰈹  $1";
               "zsh" = "";
               "wezterm" = "";
               "nvim" = " NeoVim";
@@ -147,6 +147,8 @@
         					color: @mauve;
         					margin: 3px;
         					padding: 5px;
+        					padding-left: 8px;
+        					padding-right: 8px;
         					background-color: @surface0;
         					border-radius: 1rem;
         					border-style: solid;
