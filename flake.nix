@@ -4,6 +4,8 @@
   inputs = {
     nixpkgs.url = "github:nixos/nixpkgs/nixos-unstable";
 
+    # nixos-hardware.url = "github:NixOS/nixos-hardware/master";
+
     home-manager = {
       url = "github:nix-community/home-manager";
       inputs.nixpkgs.follows = "nixpkgs";
@@ -41,6 +43,7 @@
             ./hosts/laptop/configuration.nix
             ./nixosModules/sddm.nix
             ./nixosModules/vm.nix
+            # inputs.nixos-hardware.nixosModules.lenovo-thinkpad-p1
             inputs.home-manager.nixosModules.default
             (
               { ... }:

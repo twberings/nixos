@@ -42,8 +42,23 @@
       }
       {
         mode = "n";
+        key = "<leader>sv";
+        action = "<CMD>vsplit<CR>";
+      }
+      {
+        mode = "n";
+        key = "<leader>sh";
+        action = "<CMD>split<CR>";
+      }
+      {
+        mode = "n";
         key = "<leader>gf";
         action.__raw = "vim.lsp.buf.format";
+      }
+      {
+        mode = "n";
+        key = "<leader>h";
+        action = "<CMD>lua vim.diagnostic.enable(not vim.diagnostic.is_enabled())<CR>";
       }
     ];
 
@@ -85,7 +100,7 @@
               emoji = {
                 name = "Emoji";
                 module = "blink-emoji";
-                score_offset = 1;
+                score_offset = -1;
               };
             };
           };
@@ -96,7 +111,8 @@
       oil.enable = true;
       lualine.enable = true;
       todo-comments.enable = true;
-      # nvim-autopair.enable = true;
+      nvim-autopairs.enable = true;
+      tmux-navigator.enable = true;
       treesitter = {
         enable = true;
         settings = {
@@ -112,6 +128,7 @@
           "<leader>fg" = "live_grep";
           "<leader><leader>" = "oldfiles";
         };
+        extensions.ui-select.enable = true;
       };
       web-devicons.enable = true;
       notify.enable = true;

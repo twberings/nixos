@@ -7,5 +7,6 @@
     ./wezterm.nix
     ./starship.nix
     ./waybar.nix
+    ./tmux.nix
   ];
 }

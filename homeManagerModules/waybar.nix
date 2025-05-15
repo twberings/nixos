@@ -77,6 +77,7 @@
         				
         				window#waybar {
         					background-color: transparent;
+        					transition: background .3s;
         				}
 
         				window#waybar.solo {
@@ -112,6 +113,11 @@
         					border-color: @green;
         					padding-left: 10px;
         				}
+
+                #battery.full {
+                  color: @green;
+        					border-color: @green;
+                }
 
         				#battery.warning:not(.charging) {
         					color: @red;

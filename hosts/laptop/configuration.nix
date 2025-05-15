@@ -15,6 +15,23 @@
   boot.loader.systemd-boot.enable = true;
   boot.loader.efi.canTouchEfiVariables = true;
 
+  hardware.graphics.enable = true;
+
+  services.xserver.videoDrivers = [ "nvidia" ];
+
+  hardware.nvidia = {
+    modesetting.enable = true;
+    powerManagement.enable = false;
+    powerManagement.finegrained = false;
+    open = false;
+    nvidiaSettings = true;
+    package = config.boot.kernelPackages.nvidiaPackages.stable;
+    prime = {
+      intelBusId = "PCI:0:2:0";
+      nvidiaBusId = "PCI:1:0:0";
+    };
+  };
+
   networking.hostName = "nixos";
   networking.networkmanager.enable = true;
 
@@ -33,6 +50,8 @@
     font = "Lat2-Terminus16";
     useXkbConfig = true;
   };
+
+  nixpkgs.config.allowUnfree = true;
 
   services.printing.enable = true;
 

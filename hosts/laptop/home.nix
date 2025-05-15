@@ -16,9 +16,6 @@
   home.file = {
   };
 
-  home.sessionVariables = {
-  };
-
   programs.home-manager.enable = true;
 
   programs.zsh = {
@@ -26,6 +23,9 @@
     autosuggestion = {
       enable = true;
       strategy = [ "history" ];
+    };
+    shellAliases = {
+      nd = "nix develop -c $SHELL";
     };
   };
 
