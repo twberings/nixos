@@ -68,6 +68,10 @@
     plugins = {
       lsp = {
         enable = true;
+        keymaps.lspBuf = {
+          gd = "definition";
+          gD = "references";
+        };
         inlayHints = true;
         servers = {
           nixd = {

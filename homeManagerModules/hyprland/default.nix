@@ -18,6 +18,11 @@
         monitor = ",highres, auto, 1";
         env = "XCURSOR_SIZE,24";
 
+        misc = {
+          disable_splash_rendering = true;
+          disable_hyprland_logo = true;
+        };
+
         input = {
           kb_options = "ctrl:nocaps";
           follow_mouse = 1;

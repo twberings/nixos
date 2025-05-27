@@ -25,7 +25,7 @@
       strategy = [ "history" ];
     };
     shellAliases = {
-      nd = "nix develop -c $SHELL";
+      nd = "nix develop path:nix -c $SHELL";
     };
   };
 
