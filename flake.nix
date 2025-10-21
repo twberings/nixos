@@ -37,6 +37,21 @@
     }@inputs:
     {
       nixosConfigurations = {
+        pc = nixpkgs.lib.nixosSystem {
+          specialArgs = { inherit inputs; };
+          modules = [
+            ./hosts/pc/configuration.nix
+            inputs.home-manager.nixosModules.default
+            {
+              home-manager.users.thijs = {
+                imports = [
+                  catppuccin.homeModules.catppuccin
+                  nixvim.homeManagerModules.nixvim
+                ];
+              };
+            }
+          ];
+        };
         nixos = nixpkgs.lib.nixosSystem {
           specialArgs = { inherit inputs; };
           modules = [
