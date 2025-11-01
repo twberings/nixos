@@ -15,22 +15,22 @@
   boot.loader.systemd-boot.enable = true;
   boot.loader.efi.canTouchEfiVariables = true;
 
-  hardware.graphics.enable = true;
-
-  services.xserver.videoDrivers = [ "nvidia" ];
-
-  hardware.nvidia = {
-    modesetting.enable = true;
-    powerManagement.enable = false;
-    powerManagement.finegrained = false;
-    open = false;
-    nvidiaSettings = true;
-    package = config.boot.kernelPackages.nvidiaPackages.stable;
-    prime = {
-      intelBusId = "PCI:0:2:0";
-      nvidiaBusId = "PCI:1:0:0";
-    };
-  };
+  # hardware.graphics.enable = true;
+  #
+  # services.xserver.videoDrivers = [ "nvidia" ];
+  #
+  # hardware.nvidia = {
+  #   modesetting.enable = true;
+  #   powerManagement.enable = false;
+  #   powerManagement.finegrained = false;
+  #   open = false;
+  #   nvidiaSettings = true;
+  #   package = config.boot.kernelPackages.nvidiaPackages.stable;
+  #   prime = {
+  #     intelBusId = "PCI:0:2:0";
+  #     nvidiaBusId = "PCI:1:0:0";
+  #   };
+  # };
 
   networking.hostName = "nixos";
   networking.networkmanager.enable = true;
@@ -58,6 +58,15 @@
   };
 
   services.libinput.enable = true;
+
+  services.greetd = {
+    enable = true;
+    settings = {
+      default_session = {
+        command = "${pkgs.greetd.greetd}/bin/agreety --cmd hyprland";
+      };
+    };
+  };
 
   users.users.thijs = {
     isNormalUser = true;
