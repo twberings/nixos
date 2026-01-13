@@ -28,7 +28,7 @@
         					window_background_opacity = 0.7,
         					font_dirs = { "${config.home.profileDirectory}/share/fonts" },
         					font = wezterm.font_with_fallback {
-        						'JetBrainsMono',
+        						'JetBrains Mono',
         						'Symbols Nerd Font Mono',
         					},
 

@@ -77,11 +77,15 @@
           nixd = {
             enable = true;
             settings = {
+              nixpkgs = {
+                expr = "import <nixpkgs> { }";
+              };
               formatting = {
-                command = [ "${lib.getExe pkgs.nixfmt-rfc-style}" ];
+                command = [ "${lib.getExe pkgs.nixfmt}" ];
               };
             };
           };
+          qmlls.enable = true;
         };
       };
       rustaceanvim = {

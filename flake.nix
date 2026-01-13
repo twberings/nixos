@@ -16,6 +16,11 @@
       inputs.nixpkgs.follows = "nixpkgs";
     };
 
+    stylix = {
+      url = "github:nix-community/stylix";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
+
     catppuccin = {
       url = "github:catppuccin/nix";
       inputs.nixpkgs.follows = "nixpkgs";
@@ -33,6 +38,7 @@
       sddm-theme,
       catppuccin,
       nixvim,
+      stylix,
       ...
     }@inputs:
     {
@@ -46,7 +52,8 @@
               home-manager.users.thijs = {
                 imports = [
                   catppuccin.homeModules.catppuccin
-                  nixvim.homeManagerModules.nixvim
+                  nixvim.homeModules.nixvim
+                  stylix.homeModules.stylix
                 ];
               };
             }

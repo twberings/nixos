@@ -1,6 +1,7 @@
 {
   config,
   lib,
+  pkgs,
   ...
 }:
 
@@ -13,10 +14,36 @@
     wayland.windowManager.hyprland = {
       enable = true;
 
+      plugins = [
+        # pkgs.hyprlandPlugins.csgo-vulkan-fix
+      ];
+
       settings = {
 
-        monitor = ",highres, auto, 1";
-        env = "XCURSOR_SIZE,24";
+        # plugin = {
+        #   csgo-vulkan-fix = {
+        #     vkfix-app = "cs2, 1920, 1440";
+        #   };
+        # };
+
+        monitor = [
+          "DP-1, 2560x1440@239.76, 0x0, 1, bitdepth, 10, vrr, 1"
+          "DP-3, 3840x2160, auto-left, 1.25"
+        ];
+
+        exec-once = [
+          "dunst"
+          "soteria"
+          "solaar -w hide"
+        ];
+        env = [
+          "XCURSOR_SIZE,24"
+          "ELECTRON_OZONE_PLATFORM_HINT,wayland"
+        ];
+
+        xwayland = {
+          force_zero_scaling = "true";
+        };
 
         misc = {
           disable_splash_rendering = true;
@@ -26,6 +53,7 @@
         input = {
           kb_options = "ctrl:nocaps";
           follow_mouse = 1;
+          accel_profile = "flat";
 
           touchpad = {
             natural_scroll = true;
@@ -66,20 +94,19 @@
           ];
         };
 
-        gestures = {
-          workspace_swipe = true;
-        };
-
         "$mainMod" = "SUPER";
 
         "$browser" = "firefox";
         "$term" = "wezterm";
         "$explorer" = "thunar";
-        "$apprunner" = "tofi-drun --drun-launch=true";
+        "$apprunner" = "rofi -show drun";
+
 
         bind = [
           "$mainMod, B, exec, $browser"
+          "$mainMod SHIFT, L, exec, hyprlock"
           "$mainMod SHIFT, B, exec, $browser -private-window"
+          "$mainMod SHIFT, S, exec, ${lib.getExe pkgs.hyprshot} -m region"
           "$mainMod, Space, exec, $apprunner"
           "$mainMod, Return, exec, $term"
           "$mainMod, T, exec, $term"
@@ -108,6 +135,7 @@
           "$mainMod, 8, workspace, 8"
           "$mainMod, 9, workspace, 9"
           "$mainMod, 0, workspace, 10"
+          "$mainMod, D, togglespecialworkspace, discord"
 
           "$mainMod SHIFT, 1, movetoworkspace, 1"
           "$mainMod SHIFT, 2, movetoworkspace, 2"
@@ -134,6 +162,7 @@
           "rounding 0, floating:0, onworkspace:w[tv1]"
           "bordersize 0, floating:0, onworkspace:f[1]"
           "rounding 0, floating:0, onworkspace:f[1]"
+          "workspace special:discord, class:^(discord)$"
         ];
 
         workspace = [

@@ -12,28 +12,48 @@
     inputs.home-manager.nixosModules.default
   ];
 
-  boot.loader.systemd-boot.enable = true;
+  boot.loader.systemd-boot.enable = false;
   boot.loader.efi.canTouchEfiVariables = true;
+  boot.loader.efi.efiSysMountPoint = "/boot";
+  boot.loader.grub = {
+    enable = true;
+    device = "nodev";
+    useOSProber = true;
+    efiSupport = true;
+  };
+  boot.supportedFilesystems = [ "ntfs" ];
 
-  # hardware.graphics.enable = true;
-  #
-  # services.xserver.videoDrivers = [ "nvidia" ];
-  #
-  # hardware.nvidia = {
-  #   modesetting.enable = true;
-  #   powerManagement.enable = false;
-  #   powerManagement.finegrained = false;
-  #   open = false;
-  #   nvidiaSettings = true;
-  #   package = config.boot.kernelPackages.nvidiaPackages.stable;
-  #   prime = {
-  #     intelBusId = "PCI:0:2:0";
-  #     nvidiaBusId = "PCI:1:0:0";
-  #   };
-  # };
+  hardware.graphics.enable = true;
+  hardware.graphics.extraPackages = with pkgs; [
+    vulkan-loader
+    vulkan-validation-layers
+    vulkan-extension-layer
+  ];
+  hardware.nvidia.open = true;
+  services.xserver.videoDrivers = [ "nvidia" ];
 
   networking.hostName = "nixos";
   networking.networkmanager.enable = true;
+
+  # fileSystems."/mnt/windows" = {
+  #   device = "/dev/disk/by-id/nvme-eui.0025385b01410a9c";
+  #   fsType = "ntfs-3g";
+  #   options = [
+  #     "rw"
+  #     "uid=1000"
+  #   ];
+  # };
+  security.polkit.enable = true;
+  security.soteria.enable = true;
+
+  fileSystems."/mnt/games" = {
+    device = "/dev/disk/by-label/Games";
+    fsType = "ntfs-3g";
+    options = [
+      "rw"
+      "uid=1000"
+    ];
+  };
 
   nix.settings.experimental-features = [
     "nix-command"
@@ -59,20 +79,28 @@
 
   services.libinput.enable = true;
 
+  services.getty.autologinUser = "thijs";
   services.greetd = {
     enable = true;
-    settings = {
-      default_session = {
-        command = "${pkgs.greetd.greetd}/bin/agreety --cmd hyprland";
+    settings = rec {
+      initial_session = {
+        command = "Hyprland";
+        user = "thijs";
       };
+      default_session = initial_session;
     };
   };
 
   users.users.thijs = {
     isNormalUser = true;
-    extraGroups = [ "wheel" ]; # Enable ‘sudo’ for the user.
+    extraGroups = [
+      "wheel"
+      "dialout"
+    ];
     shell = pkgs.zsh;
   };
+
+  hardware.flipperzero.enable = true;
 
   qt.enable = true;
   programs.firefox.enable = true;
@@ -87,9 +115,28 @@
     NIXOS_OZONE_WL = "1";
   };
 
+  hardware.logitech.wireless.enable = true;
+
+  programs.steam.enable = true;
   environment.systemPackages = with pkgs; [
+    thunar
+    file-roller
     neovim
+    solaar
+    discord
+    vulkan-tools
     wget
+    quickshell
+    thunar-archive-plugin
+    thunar-volman
+  ];
+  services.gvfs.enable = true;
+  services.tumbler.enable = true;
+
+  programs.xfconf.enable = true;
+  programs.thunar.plugins = with pkgs; [
+    thunar-archive-plugin
+    thunar-volman
   ];
 
   home-manager = {

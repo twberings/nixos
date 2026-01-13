@@ -5,17 +5,25 @@
   home.homeDirectory = "/home/thijs";
   home.stateVersion = "24.11";
 
-  home.packages = [
-    pkgs.xfce.thunar
-    pkgs.lazygit
-    pkgs.networkmanager_dmenu
-    pkgs.networkmanagerapplet
-    pkgs.ripgrep
+  home.packages = with pkgs; [
+    thunar
+    lazygit
+    networkmanager_dmenu
+    networkmanagerapplet
+    ripgrep
   ];
 
   home.file = {
   };
 
+  services.gvfs.enable = true;
+  services.tumbler.enable = true;
+
+  programs.xfconf.enable = true;
+  programs.thunar.plugins = with pkgs; [
+    thunar-archive-plugin
+    thunar-volman
+  ];
   programs.home-manager.enable = true;
 
   programs.zsh = {
@@ -71,7 +79,6 @@
 
   gtk.enable = true;
   qt.enable = true;
-  catppuccin.gtk.enable = true;
   catppuccin.cursors.enable = true;
   catppuccin.gtk.icon.enable = true;
 

@@ -17,6 +17,7 @@
       settings = {
         mainBar = {
           layer = "top";
+          output = "DP-1";
           position = "top";
           modules-left = [
             "custom/powermenu"
@@ -41,9 +42,10 @@
           "hyprland/window" = {
             rewrite = {
               "(.*) — Mozilla Firefox" = "󰈹  $1";
+              "(.*) - Discord" = "  $1";
               "zsh" = "";
               "wezterm" = "";
-              "nvim" = " NeoVim";
+              "nvim" = " Neovim";
             };
           };
           "battery" = {
@@ -68,10 +70,24 @@
             ];
           };
         };
+        sideBar = {
+          layer = "top";
+          output = "DP-3";
+          position = "top";
+          modules-center = [ "hyprland/workspaces" ];
+          "hyprland/workspaces" = {
+            format = "{icon}";
+            format-icons = {
+              active = "";
+              default = "";
+              urgent = "";
+            };
+          };
+        };
       };
       style = ''
         				* {
-        					font-family: JetBrainsMono Nerd Font;
+        					font-family: JetBrains Mono Nerd Font;
         					font-size: 15px;
         				}
         				

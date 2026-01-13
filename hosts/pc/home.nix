@@ -1,22 +1,30 @@
-{ config, pkgs, ... }:
+{
+  config,
+  pkgs,
+  lib,
+  ...
+}:
 
 {
   home.username = "thijs";
   home.homeDirectory = "/home/thijs";
   home.stateVersion = "24.11";
 
-  home.packages = [
-    pkgs.xfce.thunar
-    pkgs.lazygit
-    pkgs.networkmanager_dmenu
-    pkgs.networkmanagerapplet
-    pkgs.ripgrep
+  home.packages = with pkgs; [
+    lazygit
+    networkmanager_dmenu
+    networkmanagerapplet
+    ripgrep
+    vlc
   ];
 
   home.file = {
   };
 
+
   programs.home-manager.enable = true;
+
+  services.dunst.enable = true;
 
   programs.zsh = {
     enable = true;
@@ -31,47 +39,54 @@
 
   programs.git = {
     enable = true;
-    userEmail = "twberings@gmail.com";
-    userName = "Thijs Berings";
-    extraConfig = {
+    settings = {
+      user = {
+        email = "twberings@gmail.com";
+        name = "Thijs Berings";
+      };
       init.defaultBranch = "main";
     };
   };
+
+  programs.hyprlock.enable = true;
 
   hyprland.enable = true;
   wezterm.enable = true;
   starship.enable = true;
   waybar.enable = true;
-  programs.tofi = {
+  programs.rofi = {
     enable = true;
-    settings = {
-      width = "100%";
-      height = "100%";
-      border-width = 0;
-      outline-width = 0;
-      font = "monospace";
-      padding-left = "35%";
-      padding-top = "35%";
-      result-spacing = 25;
-      num-results = 5;
+    plugins = [
+      pkgs.rofi-games
+    ];
+    modes = [
+      "drun"
+      "games"
+    ];
+    font = lib.mkForce "JetBrains Mono 14";
+    extraConfig = {
+      show-icons = true;
+      display-drun = "";
+      display-window = "";
+      display-combi = "";
     };
-  };
-
-  xdg = {
-    enable = true;
-    configFile."networkmanager-dmenu/config.ini".text = ''
-      		[dmenu]
-      		dmenu_command = tofi
-      	'';
   };
 
   catppuccin.flavor = "mocha";
   catppuccin.accent = "green";
-  catppuccin.tofi.enable = true;
 
   gtk.enable = true;
   qt.enable = true;
-  catppuccin.gtk.enable = true;
+
+  stylix.enable = true;
+  stylix.targets.nixvim.enable = false;
+  stylix.targets.hyprland.enable = false;
+  stylix.targets.starship.enable = false;
+  stylix.targets.waybar.enable = false;
+  stylix.targets.gtk.enable = true;
+  stylix.targets.qt.enable = true;
+  stylix.base16Scheme = "${pkgs.base16-schemes}/share/themes/catppuccin-frappe.yaml";
+
   catppuccin.cursors.enable = true;
   catppuccin.gtk.icon.enable = true;
 
