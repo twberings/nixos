@@ -14,20 +14,22 @@
     { pkgs, ... }:
     {
       imports = [
-        ./hardware-configuration.nix
         inputs.home-manager.nixosModules.default
       ];
 
-      boot.loader.systemd-boot.enable = false;
-      boot.loader.efi.canTouchEfiVariables = true;
-      boot.loader.efi.efiSysMountPoint = "/boot";
-      boot.loader.grub = {
-        enable = true;
-        device = "nodev";
-        useOSProber = true;
-        efiSupport = true;
+      boot = {
+        loader.systemd-boot.enable = false;
+        loader.efi.canTouchEfiVariables = true;
+        loader.efi.efiSysMountPoint = "/boot";
+        loader.grub = {
+          enable = true;
+          device = "nodev";
+          useOSProber = true;
+          efiSupport = true;
+        };
+        supportedFilesystems = [ "ntfs" ];
+        kernelParams = ["quiet"];
       };
-      boot.supportedFilesystems = [ "ntfs" ];
 
       hardware.graphics.enable = true;
       hardware.graphics.extraPackages = with pkgs; [
@@ -43,15 +45,6 @@
 
       security.polkit.enable = true;
       security.soteria.enable = true;
-
-      fileSystems."/mnt/games" = {
-        device = "/dev/disk/by-label/Games";
-        fsType = "ntfs-3g";
-        options = [
-          "rw"
-          "uid=1000"
-        ];
-      };
 
       nix.settings.experimental-features = [
         "nix-command"

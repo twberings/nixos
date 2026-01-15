@@ -14,18 +14,7 @@
     wayland.windowManager.hyprland = {
       enable = true;
 
-      plugins = [
-        # pkgs.hyprlandPlugins.csgo-vulkan-fix
-      ];
-
       settings = {
-
-        # plugin = {
-        #   csgo-vulkan-fix = {
-        #     vkfix-app = "cs2, 1920, 1440";
-        #   };
-        # };
-
         monitor = [
           "DP-1, 2560x1440@239.76, 0x0, 1, bitdepth, 10, vrr, 1"
           "DP-3, 3840x2160, auto-left, 1.25"
@@ -101,7 +90,6 @@
         "$explorer" = "thunar";
         "$apprunner" = "rofi -show drun";
 
-
         bind = [
           "$mainMod, B, exec, $browser"
           "$mainMod SHIFT, L, exec, hyprlock"
@@ -156,13 +144,9 @@
           "$mainMod, mouse:273, resizewindow"
         ];
 
-        windowrulev2 = [
-          "noborder, focus:0"
-          "bordersize 0, floating:0, onworkspace:w[tv1]"
-          "rounding 0, floating:0, onworkspace:w[tv1]"
-          "bordersize 0, floating:0, onworkspace:f[1]"
-          "rounding 0, floating:0, onworkspace:f[1]"
-          "workspace special:discord, class:^(discord)$"
+        windowrule = [
+          "border_size 0, match:workspace w[tv1]"
+          "rounding 0, match:workspace w[tv1]"
         ];
 
         workspace = [
@@ -177,9 +161,11 @@
     services.hyprpaper = {
       enable = true;
       settings = {
-        splash = false;
-        preload = [ "$HOME/.config/hypr/wallpapers/0.png" ];
-        wallpaper = ",$HOME/.config/hypr/wallpapers/0.png";
+        wallpaper = {
+          splash = false;
+          monitor = "";
+          path = "$HOME/.config/hypr/wallpapers/0.png";
+        };
       };
     };
   };
