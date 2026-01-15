@@ -32,58 +32,59 @@
     };
   };
 
-  outputs =
-    {
-      nixpkgs,
-      sddm-theme,
-      catppuccin,
-      nixvim,
-      stylix,
-      ...
-    }@inputs:
-    {
-      nixosConfigurations = {
-        pc = nixpkgs.lib.nixosSystem {
-          specialArgs = { inherit inputs; };
-          modules = [
-            ./hosts/pc/configuration.nix
-            inputs.home-manager.nixosModules.default
-            {
-              home-manager.users.thijs = {
-                imports = [
-                  catppuccin.homeModules.catppuccin
-                  nixvim.homeModules.nixvim
-                  stylix.homeModules.stylix
-                ];
-              };
-            }
-          ];
-        };
-        nixos = nixpkgs.lib.nixosSystem {
-          specialArgs = { inherit inputs; };
-          modules = [
-            ./hosts/laptop/configuration.nix
-            ./nixosModules/sddm.nix
-            ./nixosModules/vm.nix
-            # inputs.nixos-hardware.nixosModules.lenovo-thinkpad-p1
-            inputs.home-manager.nixosModules.default
-            (
-              { ... }:
-              {
-                nixpkgs.overlays = [ sddm-theme.overlays.default ];
-              }
-            )
-            {
-              home-manager.users.thijs = {
-                imports = [
-                  catppuccin.homeModules.catppuccin
-                  nixvim.homeManagerModules.nixvim
-                ];
-              };
-            }
-          ];
-        };
-      };
-      homeManagerModules.default = ./homeManagerModules;
-    };
 }
+#   outputs =
+#     {
+#       nixpkgs,
+#       sddm-theme,
+#       catppuccin,
+#       nixvim,
+#       stylix,
+#       ...
+#     }@inputs:
+#     {
+#       nixosConfigurations = {
+#         pc = nixpkgs.lib.nixosSystem {
+#           specialArgs = { inherit inputs; };
+#           modules = [
+#             ./hosts/pc/configuration.nix
+#             inputs.home-manager.nixosModules.default
+#             {
+#               home-manager.users.thijs = {
+#                 imports = [
+#                   catppuccin.homeModules.catppuccin
+#                   nixvim.homeModules.nixvim
+#                   stylix.homeModules.stylix
+#                 ];
+#               };
+#             }
+#           ];
+#         };
+#         nixos = nixpkgs.lib.nixosSystem {
+#           specialArgs = { inherit inputs; };
+#           modules = [
+#             ./hosts/laptop/configuration.nix
+#             ./nixosModules/sddm.nix
+#             ./nixosModules/vm.nix
+#             # inputs.nixos-hardware.nixosModules.lenovo-thinkpad-p1
+#             inputs.home-manager.nixosModules.default
+#             (
+#               { ... }:
+#               {
+#                 nixpkgs.overlays = [ sddm-theme.overlays.default ];
+#               }
+#             )
+#             {
+#               home-manager.users.thijs = {
+#                 imports = [
+#                   catppuccin.homeModules.catppuccin
+#                   nixvim.homeManagerModules.nixvim
+#                 ];
+#               };
+#             }
+#           ];
+#         };
+#       };
+#       homeManagerModules.default = ./homeManagerModules;
+#     };
+# }
