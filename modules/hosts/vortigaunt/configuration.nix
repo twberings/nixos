@@ -17,6 +17,18 @@
         inputs.home-manager.nixosModules.default
       ];
 
+      home-manager = {
+        extraSpecialArgs = { inherit inputs; };
+        users = {
+          "thijs" = {
+            imports = [
+              self.homeManagerModules.hostVortigaunt
+              inputs.self.outputs.homeManagerModules.default
+            ];
+          };
+        };
+      };
+
       boot = {
         loader.systemd-boot.enable = false;
         loader.efi.canTouchEfiVariables = true;
@@ -28,7 +40,7 @@
           efiSupport = true;
         };
         supportedFilesystems = [ "ntfs" ];
-        kernelParams = ["quiet"];
+        kernelParams = [ "quiet" ];
       };
 
       hardware.graphics.enable = true;
@@ -130,17 +142,6 @@
         thunar-volman
       ];
 
-      home-manager = {
-        extraSpecialArgs = { inherit inputs; };
-        users = {
-          "thijs" = {
-            imports = [
-              ./home.nix
-              inputs.self.outputs.homeManagerModules.default
-            ];
-          };
-        };
-      };
       system.stateVersion = "24.11";
 
     };
