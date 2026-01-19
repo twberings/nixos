@@ -18,12 +18,22 @@
       ];
 
       home-manager = {
-        extraSpecialArgs = { inherit inputs; };
+        # extraSpecialArgs = { inherit inputs; };
         users = {
-          "thijs" = {
+          thijs = {
             imports = [
-              self.homeManagerModules.hostVortigaunt
-              inputs.self.outputs.homeManagerModules.default
+              # inputs.self.outputs.homeManagerModules.default
+              self.homeConfigurations.hostVortigaunt
+              self.homeManagerModules.nixvim
+              self.homeManagerModules.hyprland
+              self.homeManagerModules.fonts
+              self.homeManagerModules.starship
+              self.homeManagerModules.tmux
+              self.homeManagerModules.waybar
+              self.homeManagerModules.wezterm
+              inputs.catppuccin.homeModules.catppuccin
+              inputs.nixvim.homeModules.nixvim
+              inputs.stylix.homeModules.stylix
             ];
           };
         };

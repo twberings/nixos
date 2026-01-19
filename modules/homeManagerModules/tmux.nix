@@ -1,0 +1,25 @@
+{
+  config,
+  lib,
+  pkgs,
+  ...
+}:
+
+{
+  flake.homeManagerModules.tmux = {
+    options = {
+      tmux.enable = lib.mkEnableOption "enables tmux";
+    };
+
+    config = lib.mkIf config.wezterm.enable {
+      programs.tmux = {
+        enable = true;
+        prefix = "C-s";
+        plugins = [
+          # pkgs.tmuxPlugins.catppuccin
+          # pkgs.tmuxPlugins.vim-tmux-navigator
+        ];
+      };
+    };
+  };
+}
