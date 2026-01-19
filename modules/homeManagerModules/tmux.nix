@@ -1,25 +1,25 @@
 {
-  config,
-  lib,
-  pkgs,
-  ...
-}:
+  flake.homeModules.tmux =
+    {
+      config,
+      lib,
+      pkgs,
+      ...
+    }:
+    {
+      options = {
+        tmux.enable = lib.mkEnableOption "enables tmux";
+      };
 
-{
-  flake.homeManagerModules.tmux = {
-    options = {
-      tmux.enable = lib.mkEnableOption "enables tmux";
-    };
-
-    config = lib.mkIf config.wezterm.enable {
-      programs.tmux = {
-        enable = true;
-        prefix = "C-s";
-        plugins = [
-          # pkgs.tmuxPlugins.catppuccin
-          # pkgs.tmuxPlugins.vim-tmux-navigator
-        ];
+      config = lib.mkIf config.wezterm.enable {
+        programs.tmux = {
+          enable = true;
+          prefix = "C-s";
+          plugins = [
+            # pkgs.tmuxPlugins.catppuccin
+            # pkgs.tmuxPlugins.vim-tmux-navigator
+          ];
+        };
       };
     };
-  };
 }

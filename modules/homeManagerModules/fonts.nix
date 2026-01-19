@@ -1,11 +1,11 @@
-{ pkgs, ... }:
-
 {
-  flake.homeManagerModules.fonts = {
-    fonts.fontconfig.enable = true;
-    home.packages = with pkgs; [
-      jetbrains-mono
-      nerd-fonts.symbols-only
-    ];
-  };
+  flake.homeModules.fonts =
+    { pkgs, ... }:
+    {
+      fonts.fontconfig.enable = true;
+      home.packages = with pkgs; [
+        jetbrains-mono
+        nerd-fonts.symbols-only
+      ];
+    };
 }

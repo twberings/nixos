@@ -24,13 +24,13 @@
             imports = [
               # inputs.self.outputs.homeManagerModules.default
               self.homeConfigurations.hostVortigaunt
-              self.homeManagerModules.nixvim
-              self.homeManagerModules.hyprland
-              self.homeManagerModules.fonts
-              self.homeManagerModules.starship
-              self.homeManagerModules.tmux
-              self.homeManagerModules.waybar
-              self.homeManagerModules.wezterm
+              self.homeModules.nixvim
+              self.homeModules.hyprland
+              self.homeModules.fonts
+              self.homeModules.starship
+              self.homeModules.tmux
+              self.homeModules.waybar
+              self.homeModules.wezterm
               inputs.catppuccin.homeModules.catppuccin
               inputs.nixvim.homeModules.nixvim
               inputs.stylix.homeModules.stylix
