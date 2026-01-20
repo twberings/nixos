@@ -162,8 +162,8 @@
         services.hyprpaper = {
           enable = true;
           settings = {
+            splash = false;
             wallpaper = {
-              splash = false;
               monitor = "";
               path = "$HOME/.config/hypr/wallpapers/0.png";
             };
