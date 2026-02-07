@@ -46,6 +46,10 @@
           init.defaultBranch = "main";
         };
       };
+      programs.gh = {
+        enable = true;
+        gitCredentialHelper.enable = true;
+      };
 
       programs.hyprlock.enable = true;
 
