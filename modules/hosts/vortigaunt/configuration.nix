@@ -130,7 +130,27 @@
 
       hardware.logitech.wireless.enable = true;
 
-      programs.steam.enable = true;
+      programs.steam = {
+        enable = true;
+        remotePlay.openFirewall = true;
+        extraCompatPackages = with pkgs; [
+          proton-ge-bin
+        ];
+        extraPackages = with pkgs; [
+          gamescope
+          SDL2
+          er-patcher
+        ];
+        protontricks.enable = true;
+        gamescopeSession.enable = true;
+      };
+      programs.gamemode.enable = true;
+
+      programs.gamescope = {
+        enable = true;
+        capSysNice = false;
+      };
+
       environment.systemPackages = with pkgs; [
         thunar
         file-roller
@@ -142,6 +162,10 @@
         quickshell
         thunar-archive-plugin
         thunar-volman
+        gamescope-wsi
+        gamescope
+        steam-run
+        archipelago
       ];
       services.gvfs.enable = true;
       services.tumbler.enable = true;
