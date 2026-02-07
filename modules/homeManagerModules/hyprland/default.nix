@@ -148,6 +148,7 @@
             windowrule = [
               "border_size 0, match:workspace w[tv1]"
               "rounding 0, match:workspace w[tv1]"
+              "workspace special:discord, match:class ^(discord|Discord)$"
             ];
 
             workspace = [
