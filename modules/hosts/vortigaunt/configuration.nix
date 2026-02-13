@@ -18,11 +18,9 @@
       ];
 
       home-manager = {
-        # extraSpecialArgs = { inherit inputs; };
         users = {
           thijs = {
             imports = [
-              # inputs.self.outputs.homeManagerModules.default
               self.homeConfigurations.hostVortigaunt
               self.homeModules.nixvim
               self.homeModules.hyprland
