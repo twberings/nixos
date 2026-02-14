@@ -95,6 +95,7 @@
       };
 
       services.libinput.enable = true;
+      services.upower.enable = true;
 
       users.users.thijs = {
         isNormalUser = true;
