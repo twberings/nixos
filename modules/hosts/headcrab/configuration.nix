@@ -9,6 +9,12 @@
     modules = with self; [
       nixosModules.hostHeadcrab
       nixosModules.sddm
+      (
+        { ... }:
+        {
+          nixpkgs.overlays = [ inputs.sddm-theme.overlays.default ];
+        }
+      )
     ];
   };
   flake.nixosModules.hostHeadcrab =
@@ -26,6 +32,7 @@
               homeConfigurations.hostHeadcrab
               homeModules.nixvim
               homeModules.hyprland
+              homeModules.hyprlandgestures
               homeModules.fonts
               homeModules.starship
               homeModules.tmux
@@ -67,7 +74,6 @@
         "flakes"
       ];
       sddm.enable = true;
-      vm.enable = true;
       boot.plymouth.enable = true;
 
       time.timeZone = "Europe/Amsterdam";

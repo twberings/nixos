@@ -16,14 +16,14 @@
       home.file = {
       };
 
-      services.gvfs.enable = true;
-      services.tumbler.enable = true;
+      # services.gvfs.enable = true;
+      # services.tumbler.enable = true;
 
-      programs.xfconf.enable = true;
-      programs.thunar.plugins = with pkgs; [
-        thunar-archive-plugin
-        thunar-volman
-      ];
+      # programs.xfconf.enable = true;
+      # programs.thunar.plugins = with pkgs; [
+      #   thunar-archive-plugin
+      #   thunar-volman
+      # ];
       programs.home-manager.enable = true;
 
       programs.zsh = {
@@ -50,7 +50,10 @@
         gitCredentialHelper.enable = true;
       };
 
-      programs.ashell.enable = true;
+      programs.ashell = {
+        enable = true;
+        systemd.enable = true;
+      };
 
       hyprland.enable = true;
       wezterm.enable = true;
