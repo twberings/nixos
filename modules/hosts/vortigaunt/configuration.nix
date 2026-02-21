@@ -15,6 +15,7 @@
     {
       imports = [
         inputs.home-manager.nixosModules.default
+        self.diskoConfigurations.hostVortigaunt
       ];
 
       home-manager = {
