@@ -59,6 +59,9 @@
       };
 
       hyprland.enable = true;
+      wayland.windowManager.hyprland.settings.monitor = [
+        ",highres, auto, 1"
+      ];
       wezterm.enable = true;
       starship.enable = true;
       programs.rofi = {

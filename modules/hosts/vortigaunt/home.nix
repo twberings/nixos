@@ -54,6 +54,10 @@
       programs.hyprlock.enable = true;
 
       hyprland.enable = true;
+      wayland.windowManager.hyprland.settings.monitor = [
+        "DP-1, 2560x1440@239.76, 0x0, 1, bitdepth, 10, vrr, 1"
+        "DP-3, 3840x2160, auto-left, 1.25"
+      ];
       wezterm.enable = true;
       starship.enable = true;
       waybar.enable = true;
