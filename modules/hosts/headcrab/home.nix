@@ -45,6 +45,7 @@
             name = "Thijs Berings";
           };
           init.defaultBranch = "main";
+          pull.rebase = false;
         };
       };
       programs.gh = {
