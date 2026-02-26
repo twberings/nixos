@@ -68,6 +68,10 @@
 
       networking.hostName = "nixos";
       networking.networkmanager.enable = true;
+      security.polkit.enable = true;
+      security.soteria.enable = true;
+      virtualisation.vmware.host.enable = true;
+      virtualisation.vmware.guest.enable = true;
 
       nix.settings.experimental-features = [
         "nix-command"
@@ -123,7 +127,19 @@
       environment.systemPackages = with pkgs; [
         neovim
         wget
+        discord-canary
+        teams-for-linux
       ];
+      services.gvfs.enable = true;
+      services.tumbler.enable = true;
+
+      programs.xfconf.enable = true;
+      programs.thunar.plugins = with pkgs; [
+        thunar-archive-plugin
+        thunar-volman
+      ];
+      hardware.logitech.wireless.enable = true;
+      hardware.flipperzero.enable = true;
 
       system.stateVersion = "24.11";
 

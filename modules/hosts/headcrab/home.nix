@@ -39,9 +39,11 @@
 
       programs.git = {
         enable = true;
-        userEmail = "twberings@gmail.com";
-        userName = "Thijs Berings";
-        extraConfig = {
+        settings = {
+          user = {
+            email = "twberings@gmail.com";
+            name = "Thijs Berings";
+          };
           init.defaultBranch = "main";
         };
       };
