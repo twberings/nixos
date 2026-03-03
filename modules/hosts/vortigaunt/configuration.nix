@@ -52,6 +52,9 @@
         supportedFilesystems = [ "ntfs" ];
         kernelParams = [ "quiet" ];
       };
+      environment.sessionVariables = {
+        GSK_RENDERER = "ngl";
+      };
 
       hardware.graphics.enable = true;
       hardware.graphics.extraPackages = with pkgs; [
@@ -59,8 +62,7 @@
         vulkan-validation-layers
         vulkan-extension-layer
       ];
-      hardware.nvidia.open = true;
-      services.xserver.videoDrivers = [ "nvidia" ];
+      services.xserver.videoDrivers = [ "amdgpu" ];
 
       networking.hostName = "nixos";
       networking.networkmanager.enable = true;
@@ -152,6 +154,11 @@
       };
 
       environment.systemPackages = with pkgs; [
+        prismlauncher
+        zenity
+        image-roll
+        owmods-gui
+        deadlock-mod-manager
         thunar
         file-roller
         neovim
@@ -166,6 +173,7 @@
         gamescope
         steam-run
         archipelago
+        kitty
       ];
       services.gvfs.enable = true;
       services.tumbler.enable = true;
