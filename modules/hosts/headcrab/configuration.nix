@@ -127,7 +127,7 @@
       environment.systemPackages = with pkgs; [
         neovim
         wget
-        discord-canary
+        discord
         teams-for-linux
       ];
       services.gvfs.enable = true;
