@@ -53,8 +53,33 @@
           }
           {
             mode = "n";
+            key = "<leader>p";
+            action = "\"+p";
+          }
+          {
+            mode = "n";
+            key = "<leader>P";
+            action = "\"+P";
+          }
+          {
+            mode = "v";
+            key = "<leader>p";
+            action = "\"+p";
+          }
+          {
+            mode = "n";
             key = "<leader>gf";
             action.__raw = "vim.lsp.buf.format";
+          }
+          {
+            mode = "n";
+            key = "<leader>ca";
+            action.__raw = "require(\"actions-preview\").code_actions";
+          }
+          {
+            mode = "n";
+            key = "<leader>lg";
+            action = "<CMD>LazyGit<CR>";
           }
           {
             mode = "n";
@@ -86,7 +111,12 @@
                   };
                 };
               };
+              clangd = {
+                enable = true;
+              };
+              cmake.enable = true;
               qmlls.enable = true;
+              gitlab_ci_ls.enable = true;
             };
           };
           rustaceanvim = {
@@ -130,6 +160,10 @@
             };
           };
           gitsigns.enable = true;
+          lazygit.enable = true;
+          actions-preview = {
+            enable = true;
+          };
           telescope = {
             enable = true;
             keymaps = {
@@ -138,6 +172,17 @@
               "<leader><leader>" = "oldfiles";
             };
             extensions.ui-select.enable = true;
+          };
+          none-ls = {
+            enable = true;
+            sources = {
+              code_actions = {
+                gitsigns.enable = true;
+              };
+              formatting = {
+                clang_format.enable = true;
+              };
+            };
           };
           web-devicons.enable = true;
           notify.enable = true;

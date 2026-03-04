@@ -1,6 +1,6 @@
 {
   flake.diskoConfigurations.hostVortigaunt = {
-    disko.devices = {
+/*    disko.devices = {
       disk = {
         main = {
           device = "/dev/disk/by-id/nvme-Samsung_SSD_970_EVO_1TB_S5H9NS0NB17147L";
@@ -43,6 +43,6 @@
           };
         };
       };
-    };
+    };*/
   };
 }

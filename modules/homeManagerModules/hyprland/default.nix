@@ -16,12 +16,6 @@
           enable = true;
 
           settings = {
-          #   monitor = [
-          #     # "DP-1, 2560x1440@239.76, 0x0, 1, bitdepth, 10, vrr, 1"
-          #     # "DP-3, 3840x2160, auto-left, 1.25"
-          #     ",highres, auto, 1"
-          #   ];
-
             exec-once = [
               "dunst"
               "soteria"
@@ -39,6 +33,8 @@
             misc = {
               disable_splash_rendering = true;
               disable_hyprland_logo = true;
+              enable_swallow = true;
+              swallow_regex = "^(org.wezfurlong.wezterm)$";
             };
 
             input = {
@@ -156,6 +152,8 @@
               "w[tv1], gapsout:0, gapsin:0"
               "f[1], gapsout:0, gapsin:0"
             ];
+
+            cursor.no_hardware_cursors = 1;
           };
         };
         home.file = {
