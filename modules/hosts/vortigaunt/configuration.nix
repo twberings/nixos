@@ -17,6 +17,7 @@
         inputs.home-manager.nixosModules.default
         inputs.disko.nixosModules.disko
         self.diskoConfigurations.hostVortigaunt
+        self.nixosModules.plugdev
       ];
 
       home-manager = {
@@ -111,8 +112,12 @@
         extraGroups = [
           "wheel"
           "dialout"
+          "plugdev"
         ];
         shell = pkgs.zsh;
+      };
+      users.groups = {
+        plugdev = { };
       };
 
       hardware.flipperzero.enable = true;
