@@ -4,6 +4,7 @@
     {
       programs.nixvim = {
         enable = true;
+        nixpkgs.config.allowUnfree = true;
 
         globals.mapleader = " ";
 
@@ -26,6 +27,11 @@
         };
 
         keymaps = [
+          {
+            mode = "i";
+            key = "<C-c>";
+            action = "<ESC>";
+          }
           {
             mode = "n";
             key = "<leader>w";
@@ -123,6 +129,25 @@
             enable = true;
             settings.tools.enable_clippy = true;
           };
+          crates = {
+            enable = true;
+            settings.lsp = {
+              enabled = true;
+              actions = true;
+              completion = true;
+              hover = true;
+            };
+          };
+          neotest = {
+            enable = true;
+            settings = {
+              adapters = [
+                ''
+                    require('rustaceanvim.neotest'),
+                ''
+              ];
+            };
+          };
 
           blink-emoji.enable = true;
           blink-cmp = {
@@ -159,7 +184,12 @@
               indent.enable = true;
             };
           };
-          gitsigns.enable = true;
+          gitsigns = {
+            enable = true;
+            settings = {
+              current_line_blame = true;
+            };
+          };
           lazygit.enable = true;
           actions-preview = {
             enable = true;
@@ -173,6 +203,7 @@
             };
             extensions.ui-select.enable = true;
           };
+          copilot-vim.enable = true;
           none-ls = {
             enable = true;
             sources = {
