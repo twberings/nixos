@@ -21,7 +21,9 @@
       home.file = {
       };
 
-      programs.home-manager.enable = true;
+      programs.home-manager = {
+        enable = true;
+      };
 
       services.dunst.enable = true;
 
@@ -32,7 +34,7 @@
           strategy = [ "history" ];
         };
         shellAliases = {
-          nd = "nix develop path:nix -c $SHELL";
+          nd = "nix develop -c $SHELL";
         };
       };
 
@@ -57,7 +59,7 @@
       wayland.windowManager.hyprland.settings.monitor = [
         "DP-1, 2560x1440@239.76, 0x0, 1, bitdepth, 10, vrr, 1"
         "DP-3, 3840x2160, auto-left, 1.25"
-        "HDMI-A-2, 1920x1080@144.00101, auto-right, 1, transform, 1"
+        "desc:LG Electronics 27GL650F 007NTWGJ9953, 1920x1080@144.00101, auto-right, 1, transform, 1"
       ];
       wezterm.enable = true;
       starship.enable = true;
@@ -97,14 +99,9 @@
           qt.enable = true;
         };
         base16Scheme = "${pkgs.base16-schemes}/share/themes/catppuccin-frappe.yaml";
-        cursor = {
-          package = pkgs.rose-pine-hyprcursor;
-          name = "rose-pine-hyprcursor";
-          size = 27;
-        };
       };
 
-      # catppuccin.cursors.enable = true;
+      catppuccin.cursors.enable = true;
       catppuccin.gtk.icon.enable = true;
 
     };

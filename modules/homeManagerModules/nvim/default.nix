@@ -148,6 +148,7 @@
               ];
             };
           };
+          markview.enable = true;
 
           blink-emoji.enable = true;
           blink-cmp = {

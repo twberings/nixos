@@ -133,6 +133,7 @@
       environment.sessionVariables = {
         WLR_NO_HARDWARE_CURSORS = "1";
         NIXOS_OZONE_WL = "1";
+        NH_FLAKE = "/home/thijs/nixos#vortigaunt";
       };
 
       hardware.logitech.wireless.enable = true;
@@ -159,6 +160,8 @@
       };
 
       environment.systemPackages = with pkgs; [
+        nh
+        plex-desktop
         prismlauncher
         zenity
         image-roll
